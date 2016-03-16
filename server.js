@@ -9,16 +9,15 @@ app = express(),
 path = require('path'),
 router = express.Router(),
 server = require('http').createServer(app),
-io = require('socket.io').listen(server)
+io = require('socket.io').listen(server);
 
 // this is how you register all your other folders
-app.use('/', express.static(__dirname + '/'));
 app.use('/views', express.static(__dirname + '/views'));
 app.use('/public',express.static(__dirname + '/public'));
 app.use('/controllers', express.static(__dirname + '/controllers'));
 
 
-app.listen(process.env.PORT || 3000, function () {
+server.listen(process.env.PORT || 3000, function () {
   console.log('Chatty listening on port 3000')  
 });
 
@@ -32,5 +31,5 @@ app.get('/', function (req, res) {
 // sockets stuff
 
 io.sockets.on ('connection', function (socket) {
-  console.log('Connected to the socket!!');
+  console.log('I connected to the socket!!');
 });
