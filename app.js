@@ -1,30 +1,41 @@
-/**
-  This is where I'm sticking all the node stuff.
-*/
-
-
 // set up express server
-var express = require('express'), 
-app = express(),
-path = require('path'),
-router = express.Router(),
+var express = require('express'),
+app = express(), 
 server = require('http').createServer(app),
-io = require('socket.io').listen(server)
+io = require('socket.io').listen(server);
 
-app.set('views', path.join(__dirname, 'views'));
-app.engine('html', require('ejs').renderFile());
-app.set('view engine', 'ejs')
-app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname));
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Chatty listening on port 3000')  
-});
+server.listen(3000);
 
-/*server.listen(3000, function () {
-  console.log('Started listening on port 3000')  
-})*/
 
 app.get('/', function (req, res) {
-  console.log('Talking from ' + __dirname)
-    res.sendFile(__dirname + '/start.html')
-})
+   console.log('Talking from ' + __dirname)
+    res.sendfile(__dirname + '/index.html')
+});
+
+io.sockets.on('connection', function (socket) {
+  socket.on('send message', function (data) {
+    io.sockets.emit ('new message', data);
+    //socket.broadcast.emit('new message', data); // send to everyone but me
+  });
+});
+
+
+/*var express = require('express'),
+  app = express(),
+  server = require('http').createServer(app),
+  io = require('socket.io').listen(server);
+  
+server.listen(3000);
+
+app.get('/', function(req, res){
+  res.sendfile(__dirname + '/index.html');
+});
+
+io.sockets.on('connection', function(socket){
+  socket.on('send message', function(data){
+    io.sockets.emit('new message', data);
+  });
+});
+*/

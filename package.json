@@ -3,11 +3,14 @@
   "name": "Chatty",
   "version" : "0.0.1",
   "description" : "Chat application that hooks up to Facebook without needing to be friends",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ifbalta/Chatty.git"
+  }, 
+  "private": "true",
   "main" : "app.js",
-  "dependencies" : {
-    "ejs": "*",
-    "express": "4.13.4",
-    "gravatar": "1.4.0",
-    "socket.io": "1.4.5"
+  "dependencies":{
+    "socket.io":"0.9.16",
+    "express":"3.2.6"
   }
 }

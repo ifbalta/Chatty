@@ -1,4 +1,6 @@
 // controls ChatForm
+console.log("found ChatController");
+
 var chatApp = angular.module('chatApp', []);
 
 chatApp.controller ('ChatController', ['$scope', '$http', function ($scope, $http) {
@@ -14,7 +16,4 @@ chatApp.controller ('ChatController', ['$scope', '$http', function ($scope, $htt
     console.log("Gotcha")
     $scope.master = angular.copy(chat);
   }
-
-
-
 }]);
