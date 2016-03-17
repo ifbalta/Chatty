@@ -3,26 +3,26 @@
 <head>
   <title>Chatty</title>
   <link href="/public/chatty.css" rel="stylesheet">
+
 </head>
 <body>
   <h1>Chatty</h1>
 
 
-
-<!-- Angular form version -->
-<div ng-controller="ChatController">
-  <pre>{{chat | json}}</pre>
-  <form role="form" novalidate class="simple-form">
-    <input type="text" ng-model="chat.message"/>
-    <input type="submit" ng-click="sendMessage(chat) value="Submit/>
-  </form>
-</div>
+  <!-- Angular form version -->
+  <div ng-app="chatApp" ng-controller="ChatController">
+    <pre>{{chat.message | json}}</pre>
+    <form role="form" novalidate class="simple-form">
+      <input type="text" ng-model="chat.message"/>
+      <input type="submit" ng-click="sendMessage(chat)" value="Submit"/>
+    </form>
+  </div>
 
 
   <!-- js libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="socket.io/socket.io.js"></script>
     <script src="/controllers/chatcontroller.js"></script>
+
 </body>
 </html>
