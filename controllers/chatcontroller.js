@@ -18,11 +18,11 @@ chatApp.controller ('ChatController', ['$scope', '$http', function ($scope, $htt
   ];
 
 
-  $scope.master = {};
+  $scope.master = []
 
   $scope.sendMessage = function (chat) {
-    console.log("Gotcha")
-    $scope.master = angular.copy(chat);
+    console.log("Received : " + chat.message)
+    $scope.master.push(chat.message);
   }
 }]);
 
